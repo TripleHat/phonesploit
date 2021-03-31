@@ -13,4 +13,5 @@ echo "make sure you have installed wget"
 fi
 fi
 cd PhoneSploit
+chmod +x termux.sh
 bash termux.sh
