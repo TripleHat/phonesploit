@@ -1,6 +1,12 @@
 #!/bin/bash
 clear
+Vd() {
+if [[ -f .v1.0 ]]; then
+rm .v1.0
+else
+}
 cd $HOME
+Vd
 if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
 echo -e "\e[1;92m PhoneSploit Found\e[0m"
 echo -e "\e[1;92m Write phonesploit to start tool\e[0m"
