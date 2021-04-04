@@ -1,6 +1,11 @@
 #!/bin/bash
 clear
 cd $HOME
+if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
+echo -e "\e[1;92m PhoneSploit Found\e[0m"
+echo -e "\e[1;92m Write phonesploit to start tool\e[0m"
+exit 0
+else
 touch .v1.0
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
 sleep 1
@@ -22,4 +27,5 @@ else
 echo -e "\e[1;92m [√]PhoneSploit successfully installed!\e[0m"
 echo -e "\e[1;96m [•]Use\e[1;92m phonesploit\e[0m\e[1;96m To start tool\e[0m"
 exit 0
+fi
 fi
