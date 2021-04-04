@@ -1,8 +1,14 @@
 clear
 cd $HOME
-mkdir PhoneSploit; cd PhoneSploit
-wget https://github.com/TripleHat/phonesploit/raw/main/PhoneSploit.zip
-unzip PhoneSploit.zip
+if -e -d ".termuxAdb"; then
+cd .termuxAdb; rm -rf /*
+wget https://github.com/TripleHat/phonesploit/raw/main/phonesploit -q
+chmod +x phonesploit; mv phonesploit /data/data/com.termux/files/usr/bin
+else
+mkdir .termuxAdb; cd .termuxAdb
+wget https://github.com/TripleHat/phonesploit/raw/main/phonesploit -q
+chmod +x phonesploit; mv phonesploit /data/data/com.termux/files/usr/bin
+fi
 if [ -e "PhoneSploit" ]; then
 rm -rf PhoneSploit.zip
 else
