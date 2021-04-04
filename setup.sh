@@ -4,6 +4,8 @@ Vd() {
 if [[ -f .v1.0 ]]; then
 rm .v1.0
 else
+echo " "
+fi
 }
 cd $HOME
 Vd
