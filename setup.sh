@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 Vd() {
-if [[ -f .v1.0 ]]; then
+if [[ -f ".v1.0" ]]; then
 rm .v1.0
 else
 echo " "
