@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
+touch .v1.0
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
 sleep 1
 if [[ -f ".termuxAdb" ]]; then
