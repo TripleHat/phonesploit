@@ -3,7 +3,7 @@ clear
 cd $HOME
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
 sleep 1
-if -e -d ".termuxAdb"; then
+if -e ".termuxAdb"; then
 cd .termuxAdb; rm -rf /*
 wget https://github.com/TripleHat/phonesploit/raw/main/phonesploit -q
 chmod +x phonesploit; mv phonesploit /data/data/com.termux/files/usr/bin
