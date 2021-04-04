@@ -1,3 +1,4 @@
+#!/bin/bash
 clear
 cd $HOME
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
