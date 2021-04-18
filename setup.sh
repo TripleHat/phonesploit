@@ -3,9 +3,8 @@ clear
 cd $HOME
 
 if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
-echo -e "\e[1;92m PhoneSploit Found\e[0m"
-echo -e "\e[1;92m Write phonesploit to start tool\e[0m"
-exit 0
+rm -rf data/data/com.termux/files/usr/bin/phonesploit
+curl https://raw.githubusercontent.com/TripleHat/phonesploit/main/setup.sh | bash -
 else
 
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
