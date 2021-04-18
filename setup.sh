@@ -1,4 +1,6 @@
 #!/bin/bash
+# Coded by TripleHat
+# setup.sh 
 clear
 cd $HOME
 
