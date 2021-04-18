@@ -1,3 +1,8 @@
+[![HitCount](http://hits.dwyl.com/TripleHat/phonesploit.svg)](http://hits.dwyl.com/TripleHat/phonesploit)
+![](https://img.shields.io/github/last-commit/TripleHat/phonesploit)
+![](https://img.shields.io/github/stars/TripleHat/phonesploit)
+![](https://img.shields.io/github/issues/TripleHat/phonesploit)
+
 # PHONESPLOIT
 <strong>This is phonesploit tool for termux users</strong><br>
 Its exploit devices connected to ADB <br>
