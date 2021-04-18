@@ -3,12 +3,7 @@
 # setup.sh 
 clear
 cd $HOME
-
-if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
-rm -rf data/data/com.termux/files/usr/bin/phonesploit
-curl https://raw.githubusercontent.com/TripleHat/phonesploit/main/setup.sh | bash -
-else
-
+start() {
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
 sleep 1
 if [[ -f ".termuxAdb" ]]; then
@@ -30,4 +25,11 @@ echo -e "\e[1;92m [√]PhoneSploit successfully installed!\e[0m"
 echo -e "\e[1;96m [•]Use\e[1;92m phonesploit\e[0m\e[1;96m To start tool\e[0m"
 exit 0
 fi
+}
+
+if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
+rm -rf data/data/com.termux/files/usr/bin/phonesploit
+start
+else
+start
 fi
