@@ -1,18 +1,18 @@
 #!/bin/bash
 clear
 cd $HOME
-if [[ -f ".v1.0" ]]; then
-rm .v1.0
-else
-echo " "
-fi
+
+
+
+
+
 
 if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
 echo -e "\e[1;92m PhoneSploit Found\e[0m"
 echo -e "\e[1;92m Write phonesploit to start tool\e[0m"
 exit 0
 else
-touch .v1.0
+
 echo -e "\e[1;92m [~]Installing phonesploit\e[0m"
 sleep 1
 if [[ -f ".termuxAdb" ]]; then
