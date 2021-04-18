@@ -2,11 +2,6 @@
 clear
 cd $HOME
 
-
-
-
-
-
 if [[ -f /data/data/com.termux/files/usr/bin/phonesploit ]]; then
 echo -e "\e[1;92m PhoneSploit Found\e[0m"
 echo -e "\e[1;92m Write phonesploit to start tool\e[0m"
